@@ -2,7 +2,7 @@
 
 Passwords sucks!
 
-## Flow chart
+## Flowchart
 
 The flow is the same as the method called "[magic link](https://hackernoon.com/magic-links-d680d410f8f7)" except login request is sent by push notification instead of email.
 
@@ -22,7 +22,7 @@ When I made this demo I just wanted to test this concept as soon as possible so 
 - You should help user in case of intrusion attempt.
 - Block multiple login requests from the same device.
 
-## Start this server
+## Start this demo
 
 ```
 git clone https://github.com/iagobruno/passwordless-login-via-notification.git
@@ -34,4 +34,4 @@ node server.js
 ## Screenshots
 |      |      |      |      |      |
 | ---- | ---- | ---- | ---- | ---- |
-|![](readme_imgs/username-field-screen.png)|![](readme_imgs/waiting-screen.png)|![](readme_imgs/ask-screen.png)|![](readme_imgs/notification.png)|![](readme_imgs/successfully-screen.png)|
+|![](readme_imgs/username-field-screen.png)|![](readme_imgs/waiting-screen.png)|![](readme_imgs/notification.png)|![](readme_imgs/ask-screen.png)|![](readme_imgs/successfully-screen.png)|
