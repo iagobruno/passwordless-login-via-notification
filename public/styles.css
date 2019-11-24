@@ -31,6 +31,10 @@ body {
   width: 100%;
 }
 
+.big-icon {
+  font-size: 54px;
+}
+
 .page--login h1 {
   font-size: 40px;
 }
@@ -83,4 +87,12 @@ label.matter-textfield-outlined > div {
   opacity: .9;
   font-size: 14px;
   margin-top: 2px;
+}
+
+.police {
+  display: block;
+  margin: 0 auto;
+  height: 200px;
+  width: 277px;
+  max-width: 100%;
 }

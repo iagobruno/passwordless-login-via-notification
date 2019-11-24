@@ -13,7 +13,7 @@ class App extends Component {
     }
     window.onhashchange()
 
-    // ⚠ Unsafe! Just for facilitate the testing
+    // ⚠ UNSAFE! Just to keep the example simple
     const isLogged = localStorage.getItem('previously_logged_in')
     if (!isLogged) {
       location.hash = 'login'
@@ -49,7 +49,7 @@ function LoginPage(props) {
   useEffect(() => {
     let timer;
     if (screen === 'allowed') {
-      // ⚠ Unsafe! Just for facilitate the testing.
+      // ⚠ UNSAFE! Just to keep the example simple
       localStorage.setItem('previously_logged_in', true)
 
       timer = setTimeout(() => {
@@ -117,8 +117,9 @@ function LoginPage(props) {
   if (screen === 'blocked') {
     return html`
       <div class="page--login">
-        <div style="font-size: 54px">❌</div>
+        <div class="big-icon">❌</div>
         <h1>Login attempt blocked</h1>
+        <img class="police" src="/images/police.jpg" />
       </div>
     `
   }
@@ -126,7 +127,7 @@ function LoginPage(props) {
   if (screen === 'allowed') {
     return html`
       <div class="page--login">
-        <div style="font-size: 54px">✔</div>
+        <div class="big-icon">✔</div>
         <h1>Successfully logged in!</h1>
       </div>
     `
@@ -175,7 +176,7 @@ function HomePage() {
   const [showConfigurationCard, setShowConfigurationCard] = useState(false)
 
   useEffect(() => {
-    // ⚠ Unsafe! Just for facilitate the testing
+    // ⚠ UNSAFE! Just to keep the example simple
     const isNotLogged = localStorage.getItem('previously_logged_in') === undefined
     if (isNotLogged) {
       location.hash = 'login'
@@ -210,12 +211,14 @@ function HomePage() {
   return html`
     <div class="center">
       <h1>Welcome, admin!</h1>
-      ${showConfigurationCard && html`
+      ${showConfigurationCard ? html`
         <div class="card">
           <strong>Use your smartphone to sign in</strong>
           Instead of typing in your password every time you login, get a notification on your smartphone to authorize entry.
           <button class="matter-button-contained" onClick=${handleEnableClick}>Enable 👍</button>
         </div>
+      ` : html`
+        <div style="margin: 20px 0">Try signing in to another device. 👀</div>
       `}
       <div class="card"></div>
       <div class="card"></div>
@@ -257,7 +260,7 @@ function LoginRequestPage(props) {
   return html`
     <div class="page--login-request">
       ${screen === 'ask' ? html`
-        <div style="font-size: 54px">🛡</div>
+        <div class="big-icon">🛡</div>
         <h1>Are you trying to login on another device?</h1>
         <div style="margin-bottom: 0">Device: ${infos.browser} on ${infos.operationalSystem}</div>
         <div>Time: Just now</div>
@@ -265,11 +268,11 @@ function LoginRequestPage(props) {
         <button class="matter-button-outlined" onClick=${() => handleButtonClick('blocked')}>BLOCK</button>
       ` :
       screen === 'blocked' ? html`
-        <div style="font-size: 54px">🚨</div>
+        <div class="big-icon">🚨</div>
         <h1>Login attempt blocked!</h1>
       ` :
       screen === 'allowed' ? html`
-        <div style="font-size: 54px">✔</div>
+        <div class="big-icon">✔</div>
         <h1>Login has been authorized</h1>
       `
       : null}

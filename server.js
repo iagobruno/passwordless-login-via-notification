@@ -4,8 +4,9 @@ const { resolve } = require('path')
 const webpush = require('web-push')
 const EventEmitter = require('events')
 const ngrok = require('ngrok')
- 
-// ⚠ SEE https://www.npmjs.com/package/web-push
+
+// ⚠ UNSAFE! Just to keep the example simple
+// @see https://www.npmjs.com/package/web-push
 const publicVapidKey = 'BOV4vnqYSiDkUbo7k-q4up2CCSv-kXBYY7BLAV3Xx4dVOXNJU-HvWzp2YuwzSC-EDMq2DZQjotejqZedlekLK8s'
 const privateVapidKey = 'h1NDqWTpuruioPUF82BVidkByzgWUJIRK1eyjE6st08'
 webpush.setVapidDetails('mailto:iagob26@gmail.com', publicVapidKey, privateVapidKey)
