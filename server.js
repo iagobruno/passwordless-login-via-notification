@@ -2,7 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const { resolve } = require('path')
 const webpush = require('web-push')
-const os = require('os')
 const EventEmitter = require('events')
 const ngrok = require('ngrok')
  
@@ -26,13 +25,13 @@ const user = {
 }
 
 const loginRequests = []
-// [{
+// loginRequests.push({
 //   id: 1,
 //   status: 'pending' | 'allowed' | 'blocked' | 'expired' | 'canceled',
 //   browser: 'Chrome',
 //   operationalSystem: 'Windows 10',
 //   createdAt: Date.now(),
-// }]
+// })
 
 class MyEmitter extends EventEmitter {}
 const loginRequestResponses = new MyEmitter()
@@ -98,14 +97,17 @@ app.post('/send-login-request-to-phone', (req, res) => {
     .catch(err => {
       console.error(err.stack);
     })
-    
-  loginRequestResponses.on('status_change', (infos) => {
+  
+  function handler(infos) {
     if (infos.id !== request.id) return;
-    
+
+    loginRequestResponses.off('status_change', handler)
+
     if (infos.status === 'allowed') return res.sendStatus(200);
     if (infos.status === 'blocked') return res.sendStatus(403);
     if (infos.status === 'pending') return;
-  })
+  }
+  loginRequestResponses.on('status_change', handler)
 })
 
 app.get('/get-login-request-infos', (req, res) => {
@@ -124,20 +126,20 @@ app.post('/answer-the-login-request', (req, res) => {
   if (status !== 'allowed' && status !== 'blocked') return res.sendStatus(400)
 
   const infos = loginRequests.find(req => req.id == id)
-  
+
   if (infos.status !== 'pending') return res.sendStatus(403)
-  
+
   const fivemins = 1000 * 60 * 5
   if (Date.now() - infos.createdAt >= fivemins) {
     infos.status = 'expired'
 
     return res.sendStatus(403)
   }
-  
+
   infos.status = status
-  
+
   loginRequestResponses.emit('status_change', infos)
-  
+
   res.sendStatus(200)
 })
 

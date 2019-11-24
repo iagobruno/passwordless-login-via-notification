@@ -8,18 +8,18 @@ The flow is the same as the method called "[magic link](https://hackernoon.com/m
 
 ![flowchart.jpg](readme_imgs/flowchart.jpg)
 
-## Security:
+## Security
 
 When I made this demo I just wanted to test this concept as soon as possible so I didn't do a lot of security checks, but here is a list of tips for when you make your own implementation:
 
-- Passwordless login must be optional.
+- Passwordless login should be optional.
 - Only one phone can be registered as trusted.
-- Activation must be done on the phone that user will use to authorize requests.
-- User must confirm that he has a lock screen.
-- You must show infos about the device that are trying to log in so user can identify.
-- There must be a time limit for user to authorize the request.
-- When request is answered (yes or no) or time limit is reached, it should be discarded and no longer can be valid.
-- You should help user in case of intrusion attempt.
+- Activation should be done on the phone that user will use to authorize requests.
+- User should confirm that he has a lock screen.
+- You must show infos about the device that are trying to login so user can identify.
+- There should be a time limit for user to authorize the request.
+- When request is answered (allowed or blocked) or time limit is reached, it should be discarded and no longer can be valid.
+- Help user in case of intrusion attempt.
 - Block multiple login requests from the same device.
 
 ## Start this demo
