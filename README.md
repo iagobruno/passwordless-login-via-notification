@@ -6,11 +6,12 @@ Passwords sucks!
 
 The flow is the same as the method called "[magic link](https://hackernoon.com/magic-links-d680d410f8f7)" except login request is sent by push notification instead of email.
 
-![flowchart.jpg](readme_imgs/flowchart.jpg)
+![public/images/flowchart.jpg](public/images/flowchart.jpg)
 
 ## Security
 
-When I made this demo I just wanted to test this concept as soon as possible so I didn't do a lot of security checks, but here is a list of tips for when you make your own implementation:
+Disclaimer: When I made this demo I just wanted to test this concept as soon as possible so I didn't do a lot of security checks.   
+Here is a list of tips for when you make your own implementation:
 
 - Passwordless login should be optional.
 - Only one phone can be registered as trusted.
@@ -31,8 +32,10 @@ yarn install
 node server.js
 ```
 
+>  I used several new JavaScript features, so run in an updated browser.
+
 ## Screenshots
 
-|      |      |      |      |      |
-| ---- | ---- | ---- | ---- | ---- |
-|![](readme_imgs/username-field-screen.png)|![](readme_imgs/waiting-screen.png)|![](readme_imgs/notification.png)|![](readme_imgs/ask-screen.png)|![](readme_imgs/successfully-screen.png)|
+|      |      |      |      |      |      |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+|![](public/images/username-field-screen.png)|![](public/images/waiting-screen.png)|![](public/images/notification.png)|![](public/images/ask-screen.png)|![](public/images/successfully-screen.png)|![](public/images/blocked-screen.png)|
