@@ -21,6 +21,8 @@ Here is a list of tips for when you make your own implementation:
 - There should be a time limit for user to authorize the request.
 - When request is answered (allowed or blocked) or time limit is reached, it should be discarded and no longer can be valid.
 - Help user in case of intrusion attempt.
+  - Prevent login attempts on the device that are trying to hack.
+  - Temporarily disable passwordless login or temporarily disable new logins on the user account.
 - Block multiple login requests from the same device.
 
 ## Start this demo
